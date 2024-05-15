@@ -24,13 +24,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Number",
-                    "type": "PassThrough",
-                    "id": "8c293472-e163-4eab-a2c4-044ab01907b7",
-                    "expectedControlType": "Button",
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "5b05c925-e1d4-4e43-9e34-15a928aa5dea",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -146,34 +146,12 @@
                 },
                 {
                     "name": "",
-                    "id": "e1ba4af9-2ad9-4d26-a324-d08dff7a7b41",
-                    "path": "<Keyboard>/1",
+                    "id": "86b3d80b-7bb0-422f-a0ef-8d34ad4e3935",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Number",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9d9cf11b-8839-4566-a44b-3ad754452f8f",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Number",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a095ee66-bb7d-4319-b4e3-5eccb5307457",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Number",
+                    "action": "MousePosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

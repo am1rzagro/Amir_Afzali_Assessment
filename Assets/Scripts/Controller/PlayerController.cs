@@ -41,10 +41,9 @@ public class PlayerController : MonoBehaviour
         private float speed;
         private float rotateSpeed;
 
-        private Vector3 moveDirection;
-        private Vector3 MouseAxis;
-
         private Transform transform;
+
+        private Vector3 playerSelectedPosition;
 
         public void Init(GameObject gameObject, float speed, float rotateSpeed)
         {
@@ -54,18 +53,22 @@ public class PlayerController : MonoBehaviour
         }
         public void InternalUpdate()
         {
-            moveDirection = InputManager.Instance.MoveInput;
-            MouseAxis = InputManager.Instance.AxisInput;
+            playerSelectedPosition = InputManager.Instance.PlayerSelectedPosition;
+            playerSelectedPosition.y = 0;
+            transform.position = Vector3.MoveTowards(transform.position,playerSelectedPosition,Time.deltaTime * speed);
 
-            transform.Translate(new Vector3(moveDirection.x * speed, 0, moveDirection.y * speed) * Time.deltaTime);
-            transform.Rotate(Vector3.up, MouseAxis.x * rotateSpeed);
+            Vector3 relativePos = playerSelectedPosition - transform.position;
+
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * speed);
         }
+
     }
     public class PlayerTypeC : Player
     {
         private float speed;
         private float rotateSpeed;
-        private float rotateSpeedFactor = .2f;
+        private float rotateSpeedFactor = .5f;
 
         private Vector3 moveDirection;
 
@@ -82,7 +85,7 @@ public class PlayerController : MonoBehaviour
             moveDirection = InputManager.Instance.MoveInput;
 
             transform.Translate(new Vector3(0, 0, moveDirection.y * speed) * Time.deltaTime);
-            transform.Rotate(Vector3.up, moveDirection.x * rotateSpeed);
+            transform.Rotate(Vector3.up, moveDirection.x * rotateSpeed );
         }
     }
 
@@ -94,7 +97,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         PlayerTypeA playerTypeA = new PlayerTypeA();
-        PlayerTypeA playerTypeB = new PlayerTypeA();
+        PlayerTypeB playerTypeB = new PlayerTypeB();
         PlayerTypeC playerTypeC = new PlayerTypeC();
 
         players.Add(playerTypeA);
