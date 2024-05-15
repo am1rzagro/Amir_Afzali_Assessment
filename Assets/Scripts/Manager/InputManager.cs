@@ -37,6 +37,12 @@ public class InputManager : MonoBehaviour
     {
         MoveInput = playerActionMap.Player.Move.ReadValue<Vector2>();
         AxisInput = playerActionMap.Player.Look.ReadValue<Vector2>();
+
+        //var a =  playerActionMap.Player.Number.ReadValue<int>();
+        //Debug.Log(a);
+
+        Keyboard.current.FindKeyOnCurrentKeyboardLayout("1");
+
     }
     #endregion
 }
