@@ -51,9 +51,12 @@ public class InputManager : MonoBehaviour
         if (Keyboard.current[Key.Digit1].wasPressedThisFrame || Keyboard.current[Key.Numpad1].wasPressedThisFrame)
             controllType = ControllType.Type_A;
         if (Keyboard.current[Key.Digit2].wasPressedThisFrame || Keyboard.current[Key.Numpad2].wasPressedThisFrame)
+        {
             controllType = ControllType.Type_B;
+            PlayerSelectedPosition = playerTransform.position;
+        }
         if (Keyboard.current[Key.Digit3].wasPressedThisFrame || Keyboard.current[Key.Numpad3].wasPressedThisFrame)
-        controllType = ControllType.Type_C;
+            controllType = ControllType.Type_C;
 
         OnChange += (ControllType type) => { type = controllType; };
 
